@@ -1,5 +1,7 @@
 ﻿/*
+String.prototype.endsWith(suffix)               (擴充)尋找字串尾端是否包含文字
 String.prototype.splitFirst(separator)          (擴充)將第一次出現的字串分割
+String.prototype.splitLast(separator)           (擴充)將最後一次出現的字串分割
 String.prototype.toInt(hex)                     (擴充)將字串轉為數值
 getCookie(name)                                 (一般)取得Cookie
 isPageInIframe()                                (一般)判斷網頁是否在Iframe裡面
@@ -7,10 +9,21 @@ map(value, fromLow, fromHigh, toLow, toHigh)    (一般)將原區間的數值對
 queryString(name)                               (一般)取得查詢參數
 setCookie(name, value, exdays)                  (一般)設定Cookie
 */
+
+/*====================================================================================================
+(擴充)尋找字串尾端是否包含文字
+ex: "onetwothree".endsWith("three") , "onetwothree".endsWith("two")
+out: true , false
+*/
+
+String.prototype.endsWith = function(suffix) {
+    return this.indexOf(suffix, this.length - suffix.length) !== -1;
+};
+
 /*====================================================================================================
 (擴充)將第一次出現的字串分割
-ex: "one,tow,three".splitFirst(",")
-out: [0]=one , [1]=tow,three
+ex: "one,two,three".splitFirst(",")
+out: [0]=one , [1]=two,three
 */
 
 String.prototype.splitFirst = function (separator) {
@@ -27,6 +40,32 @@ String.prototype.splitFirst = function (separator) {
     if (sb != "") {
         output.push(sb);
     }
+    return output;
+};
+
+/*====================================================================================================
+(擴充)將最後一次出現的字串分割
+ex: "one,two,three".splitLast(",")
+out: [0]=one,two , [1]=three
+*/
+
+String.prototype.splitLast = function (separator) {
+    var si = this.split(separator);
+    var sb = "";
+    var max = si.length;
+    for (var i = 0; i < max; i++) {
+        if (i < max-1) {
+            sb += si[i];
+            if (i < max-2) {
+                sb += separator;
+            }
+        }
+    }
+    var output = [];
+    if (sb != "") {
+        output.push(sb);
+    }
+    output.push(si[max-1]);
     return output;
 };
 
