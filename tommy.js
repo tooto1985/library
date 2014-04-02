@@ -1,8 +1,10 @@
 ﻿/*
 String.prototype.endsWith(suffix)               (擴充)尋找字串尾端是否包含文字
+String.prototype.format()                       (擴充)取代字串中的格式項目
 String.prototype.splitFirst(separator)          (擴充)將第一次出現的字串分割
 String.prototype.splitLast(separator)           (擴充)將最後一次出現的字串分割
 String.prototype.toInt(hex)                     (擴充)將字串轉為數值
+String.format(src)                              (一般)取代字串中的格式項目
 getCookie(name)                                 (一般)取得Cookie
 isPageInIframe()                                (一般)判斷網頁是否在Iframe裡面
 map(value, fromLow, fromHigh, toLow, toHigh)    (一般)將原區間的數值對應到新區間
@@ -18,6 +20,19 @@ out: true , false
 
 String.prototype.endsWith = function(suffix) {
     return this.indexOf(suffix, this.length - suffix.length) !== -1;
+};
+
+/*====================================================================================================
+(擴充)取代字串中的格式項目
+ex: "{0}年{1}月{2}日".format(2014,4,2)
+out: 2014年4月2日
+*/
+
+String.prototype.format = function() {
+    if (arguments.length < 1) return this;
+    var args = Array.prototype.slice.call(arguments, 0);
+    args.splice(0, 0, this);
+    return String.format.apply(null, args);
 };
 
 /*====================================================================================================
@@ -80,6 +95,20 @@ String.prototype.toInt = function (hex) {
         hex = 10;
     }
     return parseInt(this, hex);
+};
+
+/*====================================================================================================
+(一般)取代字串中的格式項目
+ex: String.format("{0}年{1}月{2}日",2014,4,2)
+out: 2014年4月2日
+*/
+
+String.format = function(src) {
+    var args = Array.prototype.slice.call(arguments, 1);
+    if (args.length < 1) return src;
+    return src.replace(/\{(\d+)\}/g, function(m, i) {
+        return args[i] || "{" + i + "}";
+    });
 };
 
 /*====================================================================================================
