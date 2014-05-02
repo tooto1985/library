@@ -1,4 +1,5 @@
 ﻿/*
+Array.prototype.filter                          (擴充)陣列過濾(IE8以下沒有)
 String.prototype.endsWith(suffix)               (擴充)尋找字串尾端是否包含文字
 String.prototype.format()                       (擴充)取代字串中的格式項目
 String.prototype.splitFirst(separator)          (擴充)將第一次出現的字串分割
@@ -11,6 +12,31 @@ map(value, fromLow, fromHigh, toLow, toHigh)    (一般)將原區間的數值對
 queryString(name)                               (一般)取得查詢參數
 setCookie(name, value, exdays)                  (一般)設定Cookie
 */
+
+/*====================================================================================================
+(擴充)陣列過濾(IE8以下沒有)
+ex:  [1,2,3].filter(function(a) { return a>1 })
+out: [2,3]
+*/
+
+if (!Array.prototype.filter) {
+    Array.prototype.filter = function (fun) {
+        var t = Object(this);
+        var len = t.length >>> 0;
+        if (typeof fun !== "function")
+            throw new TypeError();
+        var res = [];
+        var thisp = arguments[1];
+        for (var i = 0; i < len; i++) {
+            if (i in t) {
+                var val = t[i];
+                if (fun.call(thisp, val, i, t))
+                    res.push(val);
+            }
+        }
+        return res;
+    };
+}
 
 /*====================================================================================================
 (擴充)尋找字串尾端是否包含文字
