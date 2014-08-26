@@ -7,7 +7,7 @@ JavaScript and jQuery libraries
 
 JavaScript library
 ------------------
-Array.prototype.filter
+Array.prototype.filter<br>
 String.prototype.endsWith(suffix)
 String.prototype.format()
 String.prototype.splitFirst(separator)
