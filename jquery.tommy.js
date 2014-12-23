@@ -22,7 +22,7 @@ out: true , false
 
 /*====================================================================================================
 (jQuery Plug-in)移除樣式
-ex:  $("div").hasAttr("width")
+ex:  $("div").removeStyle("width")
 out: jQuery Object
 */
 (function($) {
