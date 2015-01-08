@@ -6,6 +6,7 @@ String.prototype.splitFirst(separator)          (擴充)將第一次出現的字
 String.prototype.splitLast(separator)           (擴充)將最後一次出現的字串分割
 String.prototype.toInt(hex)                     (擴充)將字串轉為數值
 String.format(src)                              (一般)取代字串中的格式項目
+formatNumber(str)								(一般)數字格式
 getCookie(name)                                 (一般)取得Cookie
 isPageInIframe()                                (一般)判斷網頁是否在Iframe裡面
 map(value, fromLow, fromHigh, toLow, toHigh)    (一般)將原區間的數值對應到新區間
@@ -136,6 +137,20 @@ String.format = function(src) {
         return args[i] || "{" + i + "}";
     });
 };
+
+/*====================================================================================================
+(一般)數字格式
+ex: formatNumber("2010203")
+out: "2,010,203"
+*/
+
+function formatNumber(str) {
+	if(str.length <= 3){
+		return str;
+	} else {
+		return formatNumber(str.substr(0,str.length-3))+','+str.substr(str.length-3);
+	}
+}
 
 /*====================================================================================================
 (一般)取得Cookie
