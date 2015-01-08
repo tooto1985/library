@@ -15,6 +15,7 @@ String.prototype.splitFirst(separator)<br>
 String.prototype.splitLast(separator)<br>
 String.prototype.toInt(hex)<br>
 String.format(src)<br>
+formatNumber(str)<br>
 getCookie(name)<br>
 isPageInIframe()<br>
 map(value, fromLow, fromHigh, toLow, toHigh)<br>
