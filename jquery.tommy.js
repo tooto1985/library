@@ -11,12 +11,13 @@ out: true , false
 
 (function($) {
     $.fn.hasAttr = function(attribute) {
-        for (var i = 0, max = this.length; i < max; i++) {
-            if ($(this[i]).attr(attribute) !== undefined) {
-                return true;
+        var result = false;
+        this.each(function() {
+            if ($(this).attr(attribute) !== undefined) {
+                result = true;
             }
-        }
-        return false;
+        });
+        return result;
     };
 })(jQuery);
 
