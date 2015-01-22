@@ -8,11 +8,11 @@ How to use ?
 ------------
 JavaScript library (tommy.js)
 
-&lt;script src="https://cdn.rawgit.com/tooto1985/library/master/tommy.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.rawgit.com/tooto1985/library/master/tommy.js"></script&gt;
 
 jQuery library (jquery.tommy.tw)
 
-&lt;script src="https://cdn.rawgit.com/tooto1985/library/master/jquery.tommy.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.rawgit.com/tooto1985/library/master/jquery.tommy.js"></script&gt;
 
 
 
