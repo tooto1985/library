@@ -20,6 +20,7 @@ JavaScript library detail
 -------------------------
 
 Array.prototype.filter(function)<br>
+Array.prototype.indexOf(elt)<br>
 String.prototype.endsWith(suffix)<br>
 String.prototype.format(year, monthm day)<br>
 String.prototype.splitFirst(separator)<br>
@@ -28,6 +29,7 @@ String.prototype.toInt(hex)<br>
 String.format(src)<br>
 formatNumber(str)<br>
 getCookie(name)<br>
+isIe(ver)<br>
 isPageInIframe()<br>
 map(value, fromLow, fromHigh, toLow, toHigh)<br>
 newGuid(template)<br>

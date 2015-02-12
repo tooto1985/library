@@ -1,5 +1,6 @@
 ﻿/*
-Array.prototype.filter(function)                (擴充)陣列過濾(IE8以下沒有)
+Array.prototype.filter(fun)                		(擴充)陣列過濾(IE8以下沒有)
+Array.prototype.indexOf(elt)					(擴充)陣列搜尋(IE8以下沒有)
 String.prototype.endsWith(suffix)               (擴充)尋找字串尾端是否包含文字
 String.prototype.format(year, month, day)       (擴充)取代字串中的格式項目
 String.prototype.splitFirst(separator)          (擴充)將第一次出現的字串分割
@@ -8,6 +9,7 @@ String.prototype.toInt(hex)                     (擴充)將字串轉為數值
 String.format(src)                              (一般)取代字串中的格式項目
 formatNumber(str)                               (一般)數字格式
 getCookie(name)                                 (一般)取得Cookie
+isIe(ver)										(一般)判斷IE6~9版本
 isPageInIframe()                                (一般)判斷網頁是否在Iframe裡面
 map(value, fromLow, fromHigh, toLow, toHigh)    (一般)將原區間的數值對應到新區間
 newGuid(template)                               (一般)產生隨機16進位字串
@@ -37,6 +39,30 @@ if (!Array.prototype.filter) {
             }
         }
         return res;
+    };
+}
+
+/*====================================================================================================
+(擴充)陣列搜尋(IE8以下沒有)
+ex:  [1,2,3].indexOf(2)
+out: 1
+*/
+
+if (!Array.prototype.indexOf) {
+    Array.prototype.indexOf = function (elt /*, from*/) {
+        var len = this.length >>> 0;
+        var from = Number(arguments[1]) || 0;
+        from = (from < 0)
+             ? Math.ceil(from)
+             : Math.floor(from);
+        if (from < 0)
+            from += len;
+        for (; from < len; from++) {
+            if (from in this &&
+                this[from] === elt)
+                return from;
+        }
+        return -1;
     };
 }
 
@@ -170,6 +196,18 @@ function getCookie(name) {
         }
     }
     return undefined;
+}
+
+/*====================================================================================================
+(一般)判斷IE6~9版本
+ex: isIe(9)
+out: true / false
+*/
+
+function isIe(ver) {
+    var b = document.createElement("b");
+    b.innerHTML = "<!--[if IE ' + ver + ']><i></i><![endif]-->";
+    return b.getElementsByTagName("i").length === 1;
 }
 
 /*====================================================================================================
