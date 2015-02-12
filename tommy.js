@@ -1,6 +1,6 @@
 ﻿/*
-Array.prototype.filter(fun)                		(擴充)陣列過濾(IE8以下沒有)
-Array.prototype.indexOf(elt)					(擴充)陣列搜尋(IE8以下沒有)
+Array.prototype.filter(fun)                     (擴充)陣列過濾(IE8以下沒有)
+Array.prototype.indexOf(elt)                    (擴充)陣列搜尋(IE8以下沒有)
 String.prototype.endsWith(suffix)               (擴充)尋找字串尾端是否包含文字
 String.prototype.format(year, month, day)       (擴充)取代字串中的格式項目
 String.prototype.splitFirst(separator)          (擴充)將第一次出現的字串分割
