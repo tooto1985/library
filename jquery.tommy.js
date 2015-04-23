@@ -1,6 +1,7 @@
 /*
 $.fn.hasAttr(attribute)                         (jQuery Plug-in)是否有屬性
 $.fn.removeStyle(property)                      (jQuery Plug-in)移除樣式
+$.fn.req(index)                                 (jQuery Plug-in)尋找指定元素組的倒數第幾個元素
 */
 
 /*====================================================================================================
@@ -40,5 +41,17 @@ out: jQuery Object
        this.attr("style",newStyle.join(";"));
      }
      return this;
+  };
+})(jQuery);
+
+/*====================================================================================================
+(jQuery Plug-in)尋找指定元素組的倒數第幾個元素
+ex:  $("div").req(3)
+out: 
+*/
+
+(function($) {
+  $.fn.req = function(index) {
+	return this.eq(this.length-1-index);
   };
 })(jQuery);
