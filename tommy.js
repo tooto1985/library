@@ -1,6 +1,7 @@
 ﻿/*
 Array.prototype.filter(fun)                     (擴充)陣列過濾(IE8以下沒有)
 Array.prototype.indexOf(elt)                    (擴充)陣列搜尋(IE8以下沒有)
+Object.create(prototype)                        (擴充)建立物件(IE8以下沒有)
 String.prototype.endsWith(suffix)               (擴充)尋找字串尾端是否包含文字
 String.prototype.format(year, month, day)       (擴充)取代字串中的格式項目
 String.prototype.splitFirst(separator)          (擴充)將第一次出現的字串分割
@@ -63,6 +64,23 @@ if (!Array.prototype.indexOf) {
                 return from;
         }
         return -1;
+    };
+}
+
+/*====================================================================================================
+(擴充)建立物件(IE8以下沒有)
+ex: Object.create(Obj.prototype) instanceof Obj
+out: true
+*/
+
+if (!Object.create) {
+    Object.create = function (o) {
+        if (arguments.length > 1) {
+            throw new Error('Object.create implementation only accepts the first parameter');
+        }
+        function F () {};
+        F.prototype = o;
+        return new F();
     };
 }
 
